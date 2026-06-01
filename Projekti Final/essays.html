@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamber of Essays | The Quiet Archive</title>
+    <style>
+        /* ------------------------------------
+           CHAMBER OF ESSAYS — Intellectual Haven
+           Deep contemplation, warm paper, ink stains
+        ------------------------------------ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #1b1712, #0d0b08);
+            font-family: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+            color: #2b241b;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* old paper texture + subtle ink splatter */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 30% 40%, rgba(80, 60, 40, 0.05) 1px, transparent 1px),
+                              repeating-linear-gradient(45deg, rgba(100, 70, 40, 0.02) 0px, rgba(100, 70, 40, 0.02) 1px, transparent 1px, transparent 12px);
+            background-size: 32px 32px, 20px 20px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* drifting ink particles (essence of thought) */
+        body::after {
+            content: "✍️ 🖋️ 📜 ✒️ 💭";
+            position: fixed;
+            bottom: 8%;
+            left: -80px;
+            font-size: 48px;
+            white-space: nowrap;
+            color: rgba(160, 120, 70, 0.08);
+            pointer-events: none;
+            animation: driftInk 42s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes driftInk {
+            0% { transform: translateX(-10%) rotate(-5deg); opacity: 0.1; }
+            50% { transform: translateX(40%) rotate(2deg); opacity: 0.2; }
+            100% { transform: translateX(90%) rotate(-3deg); opacity: 0.1; }
+        }
+
+        /* main library chamber — old study room aesthetic */
+        .library {
+            position: relative;
+            z-index: 10;
+            max-width: 720px;
+            width: 100%;
+            margin: 0 auto;
+            background: #fef7ea;
+            background-image: linear-gradient(145deg, #fff7ea 0%, #f7ebd4 100%);
+            border-radius: 24px 48px 24px 48px;
+            box-shadow: 0 30px 40px -12px rgba(0,0,0,0.6),
+                        0 0 0 1px #efddbc inset,
+                        0 0 0 5px #b29264 inset,
+                        0 0 0 10px #e7d2ae inset;
+            padding: 2.2rem 2rem 2.2rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .library:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 35px 48px -14px black;
+        }
+
+        /* vintage typewriter / quill decorations */
+        .library::before {
+            content: "🖋️";
+            position: absolute;
+            top: -18px;
+            right: 25px;
+            font-size: 2rem;
+            opacity: 0.5;
+            transform: rotate(-12deg);
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+            pointer-events: none;
+        }
+
+        .library::after {
+            content: "📜";
+            position: absolute;
+            bottom: -18px;
+            left: 25px;
+            font-size: 1.8rem;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Header — essayist's desk */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px dashed #cfb28b;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #4d3a25, #9b7548, #4f3820);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            display: inline-block;
+            font-family: "Cormorant Garamond", "Georgia", serif;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        /* fountain pen nib effect */
+        .header h1::before {
+            content: "✍️";
+            font-size: 2rem;
+            position: absolute;
+            left: -55px;
+            top: -5px;
+            opacity: 0.55;
+            transform: rotate(-20deg);
+        }
+
+        .header h1::after {
+            content: "📖";
+            font-size: 2rem;
+            position: absolute;
+            right: -55px;
+            top: -5px;
+            opacity: 0.55;
+            transform: rotate(5deg);
+        }
+
+        .header p {
+            font-size: 1.12rem;
+            font-style: italic;
+            color: #6b5136;
+            background: rgba(200, 175, 135, 0.2);
+            display: inline-block;
+            padding: 0.3rem 2rem;
+            border-radius: 60px;
+            margin-top: 0.7rem;
+            backdrop-filter: blur(2px);
+            border-left: 1px solid #e2cb9c;
+            border-right: 1px solid #e2cb9c;
+            font-weight: 500;
+        }
+
+        /* BOOKS: essay folios — intellectual depth */
+        .books {
+            margin: 2rem 0 2rem;
+            position: relative;
+        }
+
+        .books ul {
+            list-style: none;
+            padding: 0.6rem 0.2rem;
+            background: #fffef5;
+            border-radius: 30px 16px 30px 16px;
+            box-shadow: inset 0 0 0 1px #f8efdf, 0 8px 18px rgba(0,0,0,0.08);
+        }
+
+        .books li {
+            font-size: 1.3rem;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            margin: 0.7rem 1rem;
+            background: #fffffa;
+            border-radius: 40px 10px 40px 10px;
+            font-weight: 500;
+            color: #2f281b;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.4, 1);
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.04), inset 0 1px 0 #fffcf0;
+            border-left: 5px solid #bc8f60;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* ink blot icon before each essay */
+        .books li::before {
+            content: "✒️";
+            font-size: 1.3rem;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+            transition: 0.2s;
+        }
+
+        /* Custom emblems for each profound essay */
+        .books li:nth-child(1)::before { content: "⏳"; font-size: 1.25rem; }
+        .books li:nth-child(2)::before { content: "🗻"; }
+        .books li:nth-child(3)::before { content: "📢"; }
+        .books li:nth-child(4)::before { content: "🦞"; }
+
+        /* author badge — classic essayist style */
+        .books li::after {
+            content: attr(data-author);
+            font-size: 0.72rem;
+            font-weight: 500;
+            background: #e7dbc7;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            color: #705a3e;
+            font-family: "Courier New", monospace;
+            letter-spacing: 0.2px;
+            border: 1px solid #d6bd90;
+            white-space: nowrap;
+        }
+
+        /* map essay authors */
+        .books li:nth-child(1)::after { content: "Seneca — Stoic wisdom"; }
+        .books li:nth-child(2)::after { content: "Albert Camus — absurd hero"; }
+        .books li:nth-child(3)::after { content: "James Baldwin — fierce soul"; }
+        .books li:nth-child(4)::after { content: "David Foster Wallace — piercing gaze"; }
+
+        /* hover: essay underline effect & warm glow */
+        .books li:hover {
+            transform: translateX(8px);
+            background: #fffef7;
+            border-left-color: #cf9f62;
+            box-shadow: 0 6px 12px rgba(100, 70, 35, 0.12);
+        }
+
+        .books li:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        /* footer: classic library return (old leather bind) */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #3e3528;
+            color: #faefdb;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.7rem 2rem;
+            border-radius: 32px 8px 32px 8px;
+            transition: all 0.3s;
+            letter-spacing: 0.8px;
+            border: 1px solid #cba06c;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        .back:hover {
+            background: #5b4832;
+            transform: translateY(-2px);
+            gap: 15px;
+            border-radius: 8px 32px 8px 32px;
+            border-color: #ebbc82;
+            box-shadow: 0 7px 15px rgba(0,0,0,0.3);
+        }
+
+        /* ink splash decoration for chamber */
+        .books ul::before {
+            content: "❝ thoughts inscribed ❞";
+            position: absolute;
+            top: -32px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            background: #ebe0cb;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            color: #836e4a;
+            font-family: monospace;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        /* vintage paper edge effect on footer */
+        footer::before {
+            content: "⚜️ marginalia ⚜️";
+            position: absolute;
+            bottom: 45px;
+            right: -15px;
+            font-size: 0.6rem;
+            background: #e2d2b5;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            color: #9f7f53;
+            transform: rotate(-5deg);
+            opacity: 0.6;
+            font-family: monospace;
+        }
+
+        /* subtle animated underline for essay titles */
+        @keyframes inkFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .library {
+            background-size: 200% 100%;
+            animation: inkFlow 14s infinite alternate ease-in-out;
+        }
+
+        /* response / soft feel */
+        @media (max-width: 620px) {
+            .library {
+                padding: 1.4rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header h1::before, .header h1::after {
+                font-size: 1.3rem;
+                left: -30px;
+                right: -30px;
+                top: 0px;
+            }
+            .books li {
+                font-size: 1rem;
+                padding: 0.7rem 0.7rem 0.7rem 2.2rem;
+            }
+            .books li::after {
+                font-size: 0.6rem;
+                white-space: normal;
+            }
+            .books ul::before {
+                font-size: 0.55rem;
+                white-space: nowrap;
+            }
+            footer::before {
+                display: none;
+            }
+            .back {
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        /* essay chamber reading glow */
+        .books li:active {
+            transform: scale(0.98);
+            transition: 0.05s;
+        }
+
+        /* custom scrollbar — dark inkwell */
+        ::-webkit-scrollbar {
+            width: 6px;
+            background: #241f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #af885a;
+            border-radius: 20px;
+        }
+
+        /* extra: add a small quill icon next to the "back" link on hover */
+        .back:hover::after {
+            content: " ✍️";
+            font-size: 0.9rem;
+        }
+        .back::after {
+            transition: 0.2s;
+        }
+    </style>
+    <title>Chamber of Essays | The Quiet Archive</title>
+</head>
+<body>
+<div class="library">
+
+    <div class="header">
+        <h1>📜 Chamber of Essays</h1>
+        <p>Foundations of timeless thought</p>
+    </div>
+
+    <div class="books">
+        <ul>
+            <li data-author="Seneca">On the Shortness of Life</li>
+            <li data-author="Albert Camus">The Myth of Sisyphus</li>
+            <li data-author="James Baldwin">Notes of a Native Son</li>
+            <li data-author="David Foster Wallace">Consider the Lobster</li>
+        </ul>
+    </div>
+
+    <footer>
+        <a href="index.html" class="back">← Back to Library</a>
+    </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noir Narratives | Shadows & Whiskey</title>
+    <style>
+        /* --------------------------------------------
+           NOIR NARRATIVES — Dark Streets, Venitian Blinds
+           Smoke, shadows, vintage crime aesthetic
+        -------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #1a1612, #0a0805);
+            font-family: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+            color: #1f1a12;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* film grain / static overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(45deg, 
+                rgba(0,0,0,0.08) 0px, 
+                rgba(0,0,0,0.08) 1px,
+                transparent 1px,
+                transparent 8px),
+                repeating-linear-gradient(135deg,
+                rgba(60, 40, 20, 0.05) 0px,
+                rgba(60, 40, 20, 0.05) 1px,
+                transparent 1px,
+                transparent 12px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* drifting cigarette smoke */
+        body::after {
+            content: "🚬 💨 🕵️ 🔦";
+            position: fixed;
+            bottom: 8%;
+            left: -100px;
+            font-size: 64px;
+            white-space: nowrap;
+            color: rgba(150, 120, 80, 0.08);
+            pointer-events: none;
+            animation: driftSmoke 50s infinite linear;
+            z-index: 0;
+            filter: blur(1px);
+        }
+
+        @keyframes driftSmoke {
+            0% { transform: translateX(-10%) translateY(0px) rotate(-3deg); opacity: 0.06; }
+            50% { transform: translateX(40%) translateY(-15px) rotate(2deg); opacity: 0.12; }
+            100% { transform: translateX(90%) translateY(5px) rotate(-1deg); opacity: 0.06; }
+        }
+
+        /* main library — crime scene / interrogation room */
+        .library {
+            position: relative;
+            z-index: 10;
+            max-width: 740px;
+            width: 100%;
+            margin: 0 auto;
+            background: #f2ede2;
+            background-image: linear-gradient(115deg, #f5efe3 0%, #ece1cf 100%);
+            border-radius: 8px 32px 8px 32px;
+            box-shadow: 15px 15px 20px -8px rgba(0,0,0,0.6),
+                        0 0 0 1px #cdbc9b inset,
+                        0 0 0 5px #9e7d54 inset,
+                        0 0 0 12px #dacaa8 inset;
+            padding: 2.2rem 2rem 2.2rem 2rem;
+            transition: all 0.3s ease;
+            transform: rotate(-0.2deg);
+        }
+
+        .library:hover {
+            transform: rotate(0.1deg) translateY(-3px);
+            box-shadow: 18px 18px 24px -8px rgba(0,0,0,0.7);
+        }
+
+        /* noir props: magnifying glass / fedora */
+        .library::before {
+            content: "🕵️";
+            position: absolute;
+            top: -22px;
+            right: 25px;
+            font-size: 2rem;
+            opacity: 0.55;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+            pointer-events: none;
+            transform: rotate(-8deg);
+        }
+
+        .library::after {
+            content: "🔦";
+            position: absolute;
+            bottom: -22px;
+            left: 25px;
+            font-size: 1.8rem;
+            opacity: 0.5;
+            pointer-events: none;
+            transform: rotate(12deg);
+        }
+
+        /* Header — typewriter / confession */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #b99f72;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3e2e1f, #a87d48, #4e3822);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            font-family: "Cormorant Garamond", "Georgia", serif;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .header h1::before {
+            content: "🎩";
+            font-size: 1.8rem;
+            position: absolute;
+            left: -58px;
+            top: -4px;
+            opacity: 0.6;
+            transform: rotate(-10deg);
+        }
+
+        .header h1::after {
+            content: "🗞️";
+            font-size: 1.8rem;
+            position: absolute;
+            right: -58px;
+            top: -4px;
+            opacity: 0.6;
+            transform: rotate(5deg);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #8f6d44;
+            background: rgba(180, 150, 110, 0.25);
+            display: inline-block;
+            padding: 0.25rem 2rem;
+            border-radius: 20px 4px 20px 4px;
+            margin-top: 0.7rem;
+            backdrop-filter: blur(2px);
+            border-left: 2px solid #c6a46b;
+            border-right: 2px solid #c6a46b;
+            font-family: monospace;
+        }
+
+        /* BOOKS — case files / dossiers */
+        .books {
+            margin: 2rem 0 2rem;
+            position: relative;
+        }
+
+        .books ul {
+            list-style: none;
+            padding: 0.6rem 0.3rem;
+            background: #fffcf3;
+            border-radius: 8px 28px 8px 28px;
+            box-shadow: inset 0 0 0 1px #f2e6d4, 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .books li {
+            font-size: 1.3rem;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            margin: 0.7rem 1rem;
+            background: #fffffa;
+            border-radius: 8px 24px 8px 24px;
+            font-weight: 600;
+            color: #2b2219;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05), inset 0 1px 0 #fffcf5;
+            border-left: 5px solid #b87d46;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* noir icons: gun, cigarette, etc */
+        .books li::before {
+            content: "🔫";
+            font-size: 1.2rem;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.65;
+            transition: 0.2s;
+        }
+
+        .books li:nth-child(1)::before { content: "🦅"; font-size: 1.2rem; }
+        .books li:nth-child(2)::before { content: "💵"; }
+        .books li:nth-child(3)::before { content: "🕳️"; }
+        .books li:nth-child(4)::before { content: "🛌"; }
+
+        /* author badge — hardboiled style */
+        .books li::after {
+            content: attr(data-author);
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: #ece0ce;
+            padding: 0.2rem 1rem;
+            border-radius: 4px 16px 4px 16px;
+            color: #9b6e40;
+            font-family: "Courier New", monospace;
+            letter-spacing: 0.2px;
+            border: 1px solid #dabb8c;
+            white-space: nowrap;
+        }
+
+        .books li:nth-child(1)::after { content: "D. HAMMETT — Maltese Falcon"; }
+        .books li:nth-child(2)::after { content: "J.M. CAIN — Double Indemnity"; }
+        .books li:nth-child(3)::after { content: "D.B. HUGHES — lonely place"; }
+        .books li:nth-child(4)::after { content: "R. CHANDLER — The Big Sleep"; }
+
+        /* hover: shadow reveal */
+        .books li:hover {
+            transform: translateX(6px);
+            background: #fffef8;
+            border-left-color: #dc9a51;
+            box-shadow: 0 8px 14px rgba(0,0,0,0.12);
+        }
+
+        .books li:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+            filter: drop-shadow(0 0 2px #c2843e);
+        }
+
+        /* footer — police badge / case closed */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #3e3327;
+            color: #f7efde;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.7rem 2rem;
+            border-radius: 8px 24px 8px 24px;
+            transition: all 0.3s;
+            letter-spacing: 0.8px;
+            border: 1px solid #c99454;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.25);
+            font-family: "Cormorant Garamond", monospace;
+        }
+
+        .back:hover {
+            background: #5f4a34;
+            transform: translate(-2px, -2px);
+            gap: 16px;
+            border-radius: 24px 8px 24px 8px;
+            border-color: #ebb072;
+            box-shadow: 7px 7px 0px rgba(0,0,0,0.3);
+        }
+
+        /* crime scene tape ribbon */
+        .books ul::before {
+            content: "❮ CASE FILE NOIR ❯";
+            position: absolute;
+            top: -36px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.65rem;
+            background: #e9dccb;
+            padding: 0.2rem 1rem;
+            border-radius: 2px 14px 2px 14px;
+            color: #b47b44;
+            font-family: monospace;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            opacity: 0.85;
+            pointer-events: none;
+            font-weight: bold;
+        }
+
+        /* dusty fingerprint */
+        footer::before {
+            content: "🕵️‍♂️ fingerprint";
+            position: absolute;
+            bottom: 48px;
+            right: -8px;
+            font-size: 0.55rem;
+            background: #e3d4be;
+            padding: 0.1rem 0.6rem;
+            border-radius: 4px;
+            color: #b07842;
+            transform: skewX(-6deg);
+            opacity: 0.6;
+            font-family: monospace;
+            white-space: nowrap;
+        }
+
+        /* flickering streetlight effect */
+        @keyframes noirFlicker {
+            0% { opacity: 1; }
+            100% { opacity: 0.97; }
+        }
+
+        .library {
+            animation: noirFlicker 3s infinite alternate;
+        }
+
+        /* responsive shadowplay */
+        @media (max-width: 640px) {
+            .library {
+                padding: 1.4rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header h1::before, .header h1::after {
+                font-size: 1.3rem;
+                left: -32px;
+                right: -32px;
+            }
+            .books li {
+                font-size: 1rem;
+                padding: 0.7rem 0.7rem 0.7rem 2.2rem;
+            }
+            .books li::after {
+                font-size: 0.55rem;
+                white-space: normal;
+            }
+            .books ul::before {
+                font-size: 0.5rem;
+                white-space: nowrap;
+            }
+            footer::before {
+                display: none;
+            }
+            .back {
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        .books li:active {
+            transform: scale(0.98);
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            background: #241c14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b57d48;
+            border-radius: 2px;
+        }
+
+        .back:hover::after {
+            content: " 🕵️";
+            font-size: 0.9rem;
+        }
+        .back::after {
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+<div class="library">
+
+    <div class="header">
+        <h1>🕵️ Noir Narratives</h1>
+        <p>Foundations of timeless thought</p>
+    </div>
+
+    <div class="books">
+        <ul>
+            <li data-author="Dashiell Hammett">The Maltese Falcon</li>
+            <li data-author="James M. Cain">Double Indemnity</li>
+            <li data-author="Dorothy B. Hughes">In a Lonely Place</li>
+            <li data-author="Raymond Chandler">The Big Sleep</li>
+        </ul>
+    </div>
+
+    <footer>
+        <a href="Index.html" class="back">← Back to Library</a>
+    </footer>
+
+</div>
+</body>
+</html>

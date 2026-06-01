@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speculative Fiction | Holographic Library</title>
+    <style>
+        /* --------------------------------------------
+           SPECULATIVE FICTION — Cyberpunk, Dune, Holograms
+           Neon grids, deep space, futuristic interfaces
+        -------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0f1a, #03060c);
+            font-family: "Cormorant Garamond", "Georgia", "Courier New", monospace;
+            color: #c9d1d9;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* cyber grid & holographic scanlines */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(0deg, 
+                rgba(0, 255, 255, 0.03) 0px, 
+                rgba(0, 255, 255, 0.03) 1px,
+                transparent 1px,
+                transparent 4px),
+                repeating-linear-gradient(90deg,
+                rgba(255, 0, 255, 0.02) 0px,
+                rgba(255, 0, 255, 0.02) 1px,
+                transparent 1px,
+                transparent 30px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* floating data particles */
+        body::after {
+            content: "◈ ◆ ◇ ⌾ ⍟ ⚛️ ⟁";
+            position: fixed;
+            bottom: 5%;
+            left: -120px;
+            font-size: 70px;
+            white-space: nowrap;
+            color: rgba(0, 255, 200, 0.06);
+            pointer-events: none;
+            animation: driftData 48s infinite linear;
+            z-index: 0;
+            font-family: monospace;
+        }
+
+        @keyframes driftData {
+            0% { transform: translateX(-10%) translateY(0px) rotate(0deg); opacity: 0.05; }
+            50% { transform: translateX(42%) translateY(-12px) rotate(5deg); opacity: 0.1; }
+            100% { transform: translateX(92%) translateY(8px) rotate(-2deg); opacity: 0.05; }
+        }
+
+        /* main library — cyberdeck / neural interface */
+        .library {
+            position: relative;
+            z-index: 10;
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto;
+            background: #0f1722;
+            background-image: radial-gradient(circle at 30% 40%, rgba(0, 180, 200, 0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            border-radius: 24px 8px 24px 8px;
+            box-shadow: 0 0 0 1px #00ccff33, 0 0 0 4px #0f2a3a, 0 20px 35px -10px black, inset 0 0 20px rgba(0, 200, 255, 0.05);
+            padding: 2.2rem 2rem 2.2rem 2rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(1px);
+            border-left: 2px solid #2cffdd30;
+            border-right: 2px solid #2cffdd30;
+        }
+
+        .library:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 0 1px #44ffff, 0 0 0 5px #0f2a3a, 0 25px 40px -12px black;
+            border-left: 2px solid cyan;
+            border-right: 2px solid cyan;
+        }
+
+        /* neon ornaments */
+        .library::before {
+            content: "⚡";
+            position: absolute;
+            top: -20px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 6px cyan);
+            pointer-events: none;
+            animation: pulseNeon 2s infinite alternate;
+        }
+
+        .library::after {
+            content: "⟁";
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            font-size: 2rem;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 5px magenta);
+            pointer-events: none;
+            animation: pulseNeon 2.5s infinite alternate;
+        }
+
+        @keyframes pulseNeon {
+            0% { opacity: 0.3; text-shadow: 0 0 0px cyan; }
+            100% { opacity: 0.9; text-shadow: 0 0 6px cyan; }
+        }
+
+        /* Header — glitch cyber */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #33ccff60;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(125deg, #aaffdd, #33cccc, #88ddff, #00aaff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            display: inline-block;
+            font-family: "Courier New", "Cormorant Garamond", monospace;
+            text-shadow: 0 0 5px rgba(0,255,200,0.3);
+            position: relative;
+        }
+
+        .header h1::before {
+            content: "⌘";
+            font-size: 2rem;
+            position: absolute;
+            left: -55px;
+            top: -4px;
+            opacity: 0.8;
+            color: #0ff;
+            text-shadow: 0 0 5px cyan;
+        }
+
+        .header h1::after {
+            content: "⎋";
+            font-size: 2rem;
+            position: absolute;
+            right: -55px;
+            top: -4px;
+            opacity: 0.8;
+            color: #0ff;
+            text-shadow: 0 0 5px cyan;
+        }
+
+        .header p {
+            font-size: 1rem;
+            font-style: italic;
+            color: #88ccdd;
+            background: rgba(0, 50, 70, 0.6);
+            display: inline-block;
+            padding: 0.25rem 1.8rem;
+            border-radius: 20px;
+            margin-top: 0.7rem;
+            backdrop-filter: blur(4px);
+            border-left: 1px solid cyan;
+            border-right: 1px solid cyan;
+            font-family: monospace;
+        }
+
+        /* BOOKS — data slates */
+        .books {
+            margin: 2rem 0 2rem;
+            position: relative;
+        }
+
+        .books ul {
+            list-style: none;
+            padding: 0.6rem 0.2rem;
+            background: #0a121fcc;
+            border-radius: 16px 4px 16px 4px;
+            box-shadow: inset 0 0 0 1px #2cffaa20, 0 8px 20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(2px);
+        }
+
+        .books li {
+            font-size: 1.28rem;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            margin: 0.7rem 1rem;
+            background: #111c2ccc;
+            border-radius: 12px 0px 12px 0px;
+            font-weight: 600;
+            color: #ccf4ff;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            box-shadow: 0 0 0 1px #00ccaa30, inset 0 1px 0 #ffffff10;
+            border-left: 4px solid #2affcc;
+            cursor: pointer;
+            position: relative;
+            font-family: 'Courier New', monospace;
+            backdrop-filter: blur(2px);
+        }
+
+        /* cyber icons */
+        .books li::before {
+            content: "⌾";
+            font-size: 1.2rem;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+            transition: 0.2s;
+            color: #0ff;
+        }
+
+        .books li:nth-child(1)::before { content: "🪱"; font-size: 1.2rem; }
+        .books li:nth-child(2)::before { content: "🧠"; }
+        .books li:nth-child(3)::before { content: "❄️"; }
+        .books li:nth-child(4)::before { content: "💾"; }
+
+        /* author badge — data chip style */
+        .books li::after {
+            content: attr(data-author);
+            font-size: 0.65rem;
+            font-weight: 600;
+            background: #00aacc20;
+            padding: 0.2rem 1rem;
+            border-radius: 14px 2px 14px 2px;
+            color: #88ffdd;
+            font-family: monospace;
+            letter-spacing: 0.2px;
+            border: 1px solid #2fffff60;
+            white-space: nowrap;
+            backdrop-filter: blur(2px);
+        }
+
+        .books li:nth-child(1)::after { content: "HERBERT — Arrakis"; }
+        .books li:nth-child(2)::after { content: "GIBSON — cyberspace"; }
+        .books li:nth-child(3)::after { content: "LE GUIN — Gethen"; }
+        .books li:nth-child(4)::after { content: "STEPHENSON — metaverse"; }
+
+        /* hover: data stream effect */
+        .books li:hover {
+            transform: translateX(6px);
+            background: #1a2f44dd;
+            border-left-color: #0ff;
+            box-shadow: 0 0 12px #00ffff40;
+        }
+
+        .books li:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.15);
+            text-shadow: 0 0 5px cyan;
+        }
+
+        /* footer — neural link */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #0f212f;
+            color: #bbffff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.7rem 2rem;
+            border-radius: 8px 0px 8px 0px;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            border: 1px solid #2affcc;
+            box-shadow: 0 0 8px rgba(0,255,200,0.3);
+            font-family: monospace;
+        }
+
+        .back:hover {
+            background: #1e405a;
+            transform: translateY(-2px);
+            gap: 18px;
+            border-radius: 0px 8px 0px 8px;
+            border-color: #88ffff;
+            box-shadow: 0 0 18px cyan;
+        }
+
+        /* data stream ribbon */
+        .books ul::before {
+            content: "⌇ SPECULATIVE STREAM ⌇";
+            position: absolute;
+            top: -36px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.62rem;
+            background: #00aacc30;
+            padding: 0.2rem 1rem;
+            border-radius: 4px;
+            color: #0ff;
+            font-family: monospace;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            opacity: 0.9;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+            border: 1px solid cyan;
+        }
+
+        /* footer circuit */
+        footer::before {
+            content: "⚡ neural link ⚡";
+            position: absolute;
+            bottom: 48px;
+            right: -8px;
+            font-size: 0.55rem;
+            background: #00556660;
+            padding: 0.1rem 0.6rem;
+            border-radius: 2px;
+            color: #66ffdd;
+            transform: skewX(-8deg);
+            opacity: 0.7;
+            font-family: monospace;
+            white-space: nowrap;
+            backdrop-filter: blur(2px);
+        }
+
+        /* flicker animation */
+        @keyframes glitchBg {
+            0% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+
+        .library {
+            animation: glitchBg 2.2s infinite alternate;
+        }
+
+        @media (max-width: 640px) {
+            .library {
+                padding: 1.4rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header h1::before, .header h1::after {
+                font-size: 1.2rem;
+                left: -32px;
+                right: -32px;
+            }
+            .books li {
+                font-size: 1rem;
+                padding: 0.7rem 0.7rem 0.7rem 2.2rem;
+            }
+            .books li::after {
+                font-size: 0.5rem;
+                white-space: normal;
+            }
+            .books ul::before {
+                font-size: 0.5rem;
+                white-space: nowrap;
+            }
+            footer::before {
+                display: none;
+            }
+            .back {
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        .books li:active {
+            transform: scale(0.98);
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            background: #0a121c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2affcc;
+            border-radius: 4px;
+        }
+
+        .back:hover::after {
+            content: " ⍟";
+            font-size: 0.9rem;
+        }
+        .back::after {
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+<div class="library">
+
+    <div class="header">
+        <h1>🔮 Speculative Fiction</h1>
+        <p>Foundations of timeless thought</p>
+    </div>
+
+    <div class="books">
+        <ul>
+            <li data-author="Frank Herbert">Dune</li>
+            <li data-author="William Gibson">Neuromancer</li>
+            <li data-author="Ursula K. Le Guin">The Left Hand of Darkness</li>
+            <li data-author="Neal Stephenson">Snow Crash</li>
+        </ul>
+    </div>
+
+    <footer>
+        <a href="index.html" class="back">← Back to Library</a>
+    </footer>
+
+</div>
+</body>
+</html>

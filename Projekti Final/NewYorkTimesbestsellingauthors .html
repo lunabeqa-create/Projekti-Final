@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f5f7fa 0%, #eef2f5 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #1a2a3a;
+            min-height: 100vh;
+            padding: 3rem 1.5rem;
+            position: relative;
+        }
+
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 10% 20%, rgba(100, 150, 200, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        
+        .bestseller-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1e3a5f;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e3a5f, #2c5a7a, #1e3a5f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .subhead {
+            font-size: 1.2rem;
+            color: #4a627a;
+            border-bottom: 2px solid #cbdde6;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+       
+        .authors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+       
+        .author-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+        }
+
+        .author-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+            border-color: rgba(30, 58, 95, 0.15);
+        }
+
+        
+        .card-accent {
+            height: 5px;
+            background: linear-gradient(90deg, #e9b35f, #1e3a5f, #4a8db7);
+        }
+
+        .card-content {
+            padding: 1.6rem 1.8rem 1.8rem 1.8rem;
+        }
+
+        .author-name {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1e2f3f;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .bestseller-count {
+            font-size: 0.7rem;
+            background: #f0f4f8;
+            padding: 0.2rem 0.7rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #2c5a7a;
+            letter-spacing: 0.3px;
+        }
+
+       
+        .books-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #8ba0b0;
+            margin: 1rem 0 0.7rem 0;
+            font-weight: 600;
+        }
+
+        .book-list {
+            list-style: none;
+            margin-top: 0.2rem;
+        }
+
+        .book-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eef2f6;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            color: #2c445c;
+        }
+
+        .book-list li:last-child {
+            border-bottom: none;
+        }
+
+        .book-list li:hover {
+            transform: translateX(4px);
+            color: #1e3a5f;
+        }
+
+        .book-icon {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .book-title {
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .year {
+            font-size: 0.7rem;
+            color: #8aa0b0;
+            font-family: monospace;
+        }
+
+        
+        .rank-badge {
+            background: #f5e6d3;
+            color: #b45f2b;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        
+        .footer-note {
+            margin-top: 4rem;
+            text-align: center;
+            padding: 2rem 0 1rem 0;
+            border-top: 1px solid #dce5ec;
+            color: #7b93a8;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+        }
+
+        
+        @media (max-width: 700px) {
+            body {
+                padding: 1.8rem;
+            }
+            h1 {
+                font-size: 2.4rem;
+            }
+            .authors-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .card-content {
+                padding: 1.2rem;
+            }
+            .author-name {
+                font-size: 1.4rem;
+            }
+        }
+
+       
+        ::-webkit-scrollbar {
+            width: 6px;
+            background: #e2e8f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9bb0c2;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="bestseller-container">
+    <div class="hero-section">
+        <div class="badge">📰 The List</div>
+        <h1>New York Times<br>Bestselling Authors</h1>
+        
+    </div>
+
+    <div class="authors-grid">
+        
+        
+        <div class="author-card">
+            <div class="card-accent"></div>
+            <div class="card-content">
+                <div class="author-name">
+                    Colleen Hoover
+                    <span class="bestseller-count">#1 NYT × 12</span>
+                </div>
+                <div class="books-title">📚 Bestselling works</div>
+                <ul class="book-list">
+                    <li><span class="book-icon">✨</span><span class="book-title">It Ends with Us</span><span class="year">2016</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">✨</span><span class="book-title">It Starts with Us</span><span class="year">2022</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">✨</span><span class="book-title">Verity</span><span class="year">2018</span></li>
+                    <li><span class="book-icon">✨</span><span class="book-title">Ugly Love</span><span class="year">2014</span></li>
+                </ul>
+            </div>
+        </div>
+
+       
+        <div class="author-card">
+            <div class="card-accent"></div>
+            <div class="card-content">
+                <div class="author-name">
+                    James Patterson
+                    <span class="bestseller-count">Guinness Record</span>
+                </div>
+                <div class="books-title">📚 Bestselling works</div>
+                <ul class="book-list">
+                    <li><span class="book-icon">🕵️</span><span class="book-title">Along Came a Spider</span><span class="year">1993</span></li>
+                    <li><span class="book-icon">🕵️</span><span class="book-title">Kiss the Girls</span><span class="year">1995</span></li>
+                    <li><span class="book-icon">🕵️</span><span class="book-title">The President Is Missing</span><span class="year">2018</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">🕵️</span><span class="book-title">The 23rd Midnight</span><span class="year">2023</span></li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="author-card">
+            <div class="card-accent"></div>
+            <div class="card-content">
+                <div class="author-name">
+                    Taylor Jenkins Reid
+                    <span class="bestseller-count">cultural phenomenon</span>
+                </div>
+                <div class="books-title">📚 Bestselling works</div>
+                <ul class="book-list">
+                    <li><span class="book-icon">🎸</span><span class="book-title">Daisy Jones & The Six</span><span class="year">2019</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">🎾</span><span class="book-title">Carrie Soto Is Back</span><span class="year">2022</span></li>
+                    <li><span class="book-icon">🏖️</span><span class="book-title">Malibu Rising</span><span class="year">2021</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">📖</span><span class="book-title">The Seven Husbands of Evelyn Hugo</span><span class="year">2017</span></li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="author-card">
+            <div class="card-accent"></div>
+            <div class="card-content">
+                <div class="author-name">
+                    Stephen King
+                    <span class="bestseller-count">350+ million copies</span>
+                </div>
+                <div class="books-title">📚 Bestselling works</div>
+                <ul class="book-list">
+                    <li><span class="book-icon">🎈</span><span class="book-title">It</span><span class="year">1986</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">🏨</span><span class="book-title">The Shining</span><span class="year">1977</span></li>
+                    <li><span class="book-icon">🕳️</span><span class="book-title">Fairy Tale</span><span class="year">2022</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">📖</span><span class="book-title">Holly</span><span class="year">2023</span></li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="author-card">
+            <div class="card-accent"></div>
+            <div class="card-content">
+                <div class="author-name">
+                    Celeste Ng
+                    <span class="bestseller-count">NYT Notable</span>
+                </div>
+                <div class="books-title">📚 Bestselling works</div>
+                <ul class="book-list">
+                    <li><span class="book-icon">🔥</span><span class="book-title">Little Fires Everywhere</span><span class="year">2017</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">🗝️</span><span class="book-title">Everything I Never Told You</span><span class="year">2014</span></li>
+                    <li><span class="book-icon">✨</span><span class="book-title">Our Missing Hearts</span><span class="year">2022</span><span class="rank-badge">★ #1</span></li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="author-card">
+            <div class="card-accent"></div>
+            <div class="card-content">
+                <div class="author-name">
+                    Bonnie Garmus
+                    <span class="bestseller-count">runaway hit</span>
+                </div>
+                <div class="books-title">📚 Bestselling works</div>
+                <ul class="book-list">
+                    <li><span class="book-icon">🧪</span><span class="book-title">Lessons in Chemistry</span><span class="year">2022</span><span class="rank-badge">★ #1 (60+ weeks)</span></li>
+                </ul>
+                <div style="font-size: 0.8rem; color: #5f7f9a; margin-top: 0.6rem; font-style: italic;">Apple TV+ adaptation • Global bestseller</div>
+            </div>
+        </div>
+
+        
+        <div class="author-card">
+            <div class="card-accent"></div>
+            <div class="card-content">
+                <div class="author-name">
+                    John Grisham
+                    <span class="bestseller-count">1.5 billion copies</span>
+                </div>
+                <div class="books-title">📚 Bestselling works</div>
+                <ul class="book-list">
+                    <li><span class="book-icon">⚖️</span><span class="book-title">The Firm</span><span class="year">1991</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">⚖️</span><span class="book-title">The Pelican Brief</span><span class="year">1992</span></li>
+                    <li><span class="book-icon">⚖️</span><span class="book-title">The Exchange</span><span class="year">2023</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">⚖️</span><span class="book-title">A Time for Mercy</span><span class="year">2020</span></li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <div class="author-card">
+            <div class="card-accent"></div>
+            <div class="card-content">
+                <div class="author-name">
+                    Emily Henry
+                    <span class="bestseller-count">rom-com royalty</span>
+                </div>
+                <div class="books-title">📚 Bestselling works</div>
+                <ul class="book-list">
+                    <li><span class="book-icon">🏖️</span><span class="book-title">Beach Read</span><span class="year">2020</span></li>
+                    <li><span class="book-icon">📚</span><span class="book-title">Book Lovers</span><span class="year">2022</span><span class="rank-badge">★ #1</span></li>
+                    <li><span class="book-icon">🏕️</span><span class="book-title">People We Meet on Vacation</span><span class="year">2021</span></li>
+                    <li><span class="book-icon">❄️</span><span class="book-title">Happy Place</span><span class="year">2023</span><span class="rank-badge">★ #1</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <footer>
+        <a href="Index.html" class="back">← Back to Library</a>
+    </footer>
+</div>
+</body>
+</html>

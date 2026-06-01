@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feminine Luminaries | A Litany of Brilliance</title>
+    <style>
+        /* --------------------------------------------
+           FEMININE LUMINARIES — Elegance, Strength, Light
+           Vintage florals, pearl essence, gentle radiance
+        -------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #1e1814, #0f0c09);
+            font-family: "Cormorant Garamond", "Georgia", serif;
+            color: #2a2118;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* delicate floral / cosmic dust (feminine energy) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 70% 20%, rgba(230, 190, 150, 0.05) 1px, transparent 1px),
+                              repeating-linear-gradient(115deg, rgba(210, 170, 120, 0.02) 0px, rgba(210, 170, 120, 0.02) 1px, transparent 1px, transparent 20px);
+            background-size: 38px 38px, 25px 25px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* drifting luminary petals */
+        body::after {
+            content: "⚜️ ✨ 🌸 🕯️ 💫";
+            position: fixed;
+            top: 15%;
+            right: -70px;
+            font-size: 55px;
+            white-space: nowrap;
+            color: rgba(220, 180, 120, 0.07);
+            pointer-events: none;
+            animation: driftPetals 45s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes driftPetals {
+            0% { transform: translateX(-20%) rotate(-3deg); opacity: 0.08; }
+            50% { transform: translateX(35%) rotate(4deg); opacity: 0.16; }
+            100% { transform: translateX(85%) rotate(-2deg); opacity: 0.08; }
+        }
+
+        /* main library — illuminated manuscript / pearl & rose */
+        .library {
+            position: relative;
+            z-index: 10;
+            max-width: 740px;
+            width: 100%;
+            margin: 0 auto;
+            background: #fffaf2;
+            background-image: linear-gradient(125deg, #fff7ed 0%, #fcf0e0 100%);
+            border-radius: 48px 28px 48px 28px;
+            box-shadow: 0 30px 42px -12px rgba(0,0,0,0.5),
+                        0 0 0 1px #f2e2ca inset,
+                        0 0 0 6px #c7a878 inset,
+                        0 0 0 12px #ebddc4 inset;
+            padding: 2.2rem 2rem 2.2rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .library:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 35px 50px -14px rgba(0,0,0,0.6);
+        }
+
+        /* feminine motifs: cameo, rose */
+        .library::before {
+            content: "🌹";
+            position: absolute;
+            top: -22px;
+            left: 30px;
+            font-size: 2rem;
+            opacity: 0.55;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+            pointer-events: none;
+        }
+
+        .library::after {
+            content: "🕯️";
+            position: absolute;
+            bottom: -20px;
+            right: 30px;
+            font-size: 1.9rem;
+            opacity: 0.5;
+            pointer-events: none;
+            transform: rotate(5deg);
+        }
+
+        /* Header — luminous, elegant, bold yet soft */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 2px solid #ecdbba;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.85rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #9b6e4c, #dba468, #b47c48);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            display: inline-block;
+            font-family: "Cormorant Garamond", "Georgia", serif;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        /* laurel + star feminine emblems */
+        .header h1::before {
+            content: "⚜️";
+            font-size: 2rem;
+            position: absolute;
+            left: -60px;
+            top: -2px;
+            opacity: 0.6;
+            transform: rotate(-8deg);
+        }
+
+        .header h1::after {
+            content: "🌙";
+            font-size: 2rem;
+            position: absolute;
+            right: -55px;
+            top: -2px;
+            opacity: 0.6;
+            transform: rotate(5deg);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #886e4c;
+            background: rgba(235, 215, 175, 0.25);
+            display: inline-block;
+            padding: 0.3rem 2rem;
+            border-radius: 80px;
+            margin-top: 0.75rem;
+            backdrop-filter: blur(2px);
+            border-top: 1px solid #f2e0bf;
+            border-bottom: 1px solid #f2e0bf;
+            letter-spacing: 0.4px;
+        }
+
+        /* BOOKS: luminous wisdom chapters */
+        .books {
+            margin: 2rem 0 2rem;
+            position: relative;
+        }
+
+        .books ul {
+            list-style: none;
+            padding: 0.6rem 0.3rem;
+            background: #fffdf7;
+            border-radius: 36px 24px 36px 24px;
+            box-shadow: inset 0 0 0 1px #fcf0e1, 0 8px 20px rgba(0,0,0,0.06);
+        }
+
+        .books li {
+            font-size: 1.32rem;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            margin: 0.7rem 1rem;
+            background: #fffffffb;
+            border-radius: 48px 12px 48px 12px;
+            font-weight: 500;
+            color: #3d2b1c;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04), inset 0 1px 0 #fffcf5;
+            border-left: 5px solid #daaa74;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* delicate iconography before each title (feminine power) */
+        .books li::before {
+            content: "✨";
+            font-size: 1.3rem;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+            transition: 0.2s;
+        }
+
+        /* custom luminary symbols for each seminal work */
+        .books li:nth-child(1)::before { content: "📖"; font-size: 1.2rem; }
+        .books li:nth-child(2)::before { content: "🌀"; }
+        .books li:nth-child(3)::before { content: "💄"; }
+        .books li:nth-child(4)::before { content: "🐺"; }
+
+        /* author badges: soft & wise */
+        .books li::after {
+            content: attr(data-author);
+            font-size: 0.74rem;
+            font-weight: 500;
+            background: #f3eadb;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            color: #8b6844;
+            font-family: "Courier New", monospace;
+            letter-spacing: 0.3px;
+            border: 1px solid #edd7b0;
+            white-space: nowrap;
+        }
+
+        /* authors mapping - feminist luminaries */
+        .books li:nth-child(1)::after { content: "Simone de Beauvoir — le deuxième sexe"; }
+        .books li:nth-child(2)::after { content: "Judith Butler — performative genius"; }
+        .books li:nth-child(3)::after { content: "Naomi Wolf — the beauty myth"; }
+        .books li:nth-child(4)::after { content: "Clarissa Pinkola Estés — wild soul"; }
+
+        /* hover: gentle illumination & slight lift */
+        .books li:hover {
+            transform: translateX(8px);
+            background: #fffef9;
+            border-left-color: #e7b06e;
+            box-shadow: 0 8px 14px rgba(110, 70, 35, 0.1);
+        }
+
+        .books li:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+            filter: drop-shadow(0 0 2px #d9a066);
+        }
+
+        /* footer — silk & velvet return */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #4f3c2c;
+            color: #fef1df;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.7rem 2rem;
+            border-radius: 40px 12px 40px 12px;
+            transition: all 0.3s;
+            letter-spacing: 0.8px;
+            border: 1px solid #dbb07a;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        .back:hover {
+            background: #70543c;
+            transform: translateY(-2px);
+            gap: 16px;
+            border-radius: 12px 40px 12px 40px;
+            border-color: #f5cf98;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        /* decorative "sisterhood" ribbon */
+        .books ul::before {
+            content: "❁ luminous voices ❁";
+            position: absolute;
+            top: -34px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.68rem;
+            background: #f3e7d5;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            color: #b28556;
+            font-family: monospace;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            opacity: 0.75;
+            pointer-events: none;
+        }
+
+        /* subtle emblem: feminine symbol in footer */
+        footer::before {
+            content: "⚜️ sisterhood eternal ⚜️";
+            position: absolute;
+            bottom: 48px;
+            right: -12px;
+            font-size: 0.6rem;
+            background: #efdfc7;
+            padding: 0.1rem 0.7rem;
+            border-radius: 50px;
+            color: #a67b4e;
+            transform: rotate(-2deg);
+            opacity: 0.6;
+            font-family: monospace;
+        }
+
+        /* glowing pearl animation */
+        @keyframes softGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .library {
+            background-size: 200% 100%;
+            animation: softGlow 12s infinite alternate ease-in-out;
+        }
+
+        /* responsive — delicate adaptation */
+        @media (max-width: 640px) {
+            .library {
+                padding: 1.4rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header h1::before, .header h1::after {
+                font-size: 1.4rem;
+                left: -32px;
+                right: -32px;
+                top: 0;
+            }
+            .books li {
+                font-size: 1rem;
+                padding: 0.7rem 0.7rem 0.7rem 2.2rem;
+            }
+            .books li::after {
+                font-size: 0.6rem;
+                white-space: normal;
+            }
+            .books ul::before {
+                font-size: 0.55rem;
+                white-space: nowrap;
+            }
+            footer::before {
+                display: none;
+            }
+            .back {
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        /* active reading effect */
+        .books li:active {
+            transform: scale(0.98);
+        }
+
+        /* feminine scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            background: #291f17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c9945e;
+            border-radius: 20px;
+        }
+
+        /* soft hover addition for back link */
+        .back:hover::after {
+            content: " 🌸";
+            font-size: 0.9rem;
+        }
+        .back::after {
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+<div class="library">
+
+    <div class="header">
+        <h1>⚜️ Feminine Luminaries</h1>
+        <p>Foundations of timeless thought</p>
+    </div>
+
+    <div class="books">
+        <ul>
+            <li data-author="Simone de Beauvoir">The Second Sex</li>
+            <li data-author="Judith Butler">Gender Trouble</li>
+            <li data-author="Naomi Wolf">The Beauty Myth</li>
+            <li data-author="Clarissa Pinkola Estés">Women Who Run with the Wolves</li>
+        </ul>
+    </div>
+
+    <footer>
+        <a href="Index.html" class="back">← Back to Library</a>
+    </footer>
+
+</div>
+</body>
+</html>

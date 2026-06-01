@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poetic Expressions | A Garden of Verses</title>
+    <style>
+        /* --------------------------------------------
+           POETIC EXPRESSIONS — Lyrical, Ethereal, Blooming
+           Soft petals, ink washes, gentle rhythm
+        -------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #1e1914, #0f0c08);
+            font-family: "Cormorant Garamond", "Georgia", serif;
+            color: #2a2118;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* drifting petals / soft light */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 70% 30%, rgba(210, 160, 120, 0.06) 2px, transparent 2px),
+                              repeating-linear-gradient(115deg, rgba(180, 130, 80, 0.02) 0px, rgba(180, 130, 80, 0.02) 1px, transparent 1px, transparent 28px);
+            background-size: 48px 48px, 32px 32px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* floating lyric fragments / rose petals */
+        body::after {
+            content: "🌹 ✨ 🕊️ 🌙 🍃 ✍️";
+            position: fixed;
+            bottom: 12%;
+            left: -90px;
+            font-size: 58px;
+            white-space: nowrap;
+            color: rgba(210, 150, 100, 0.08);
+            pointer-events: none;
+            animation: driftPetals 52s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes driftPetals {
+            0% { transform: translateX(-15%) rotate(-5deg); opacity: 0.06; }
+            50% { transform: translateX(38%) rotate(3deg); opacity: 0.12; }
+            100% { transform: translateX(88%) rotate(-2deg); opacity: 0.06; }
+        }
+
+        /* main library — parchment / sonnet scroll */
+        .library {
+            position: relative;
+            z-index: 10;
+            max-width: 740px;
+            width: 100%;
+            margin: 0 auto;
+            background: #fffaf2;
+            background-image: linear-gradient(135deg, #fff8ef 0%, #fcf1e2 100%);
+            border-radius: 48px 24px 48px 24px;
+            box-shadow: 0 28px 42px -12px rgba(0,0,0,0.5),
+                        0 0 0 1px #f2e2ca inset,
+                        0 0 0 6px #c7a46e inset,
+                        0 0 0 12px #ead8bc inset;
+            padding: 2.2rem 2rem 2.2rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .library:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 35px 48px -14px rgba(0,0,0,0.6);
+        }
+
+        /* poetic emblems: quill, inkwell, rose */
+        .library::before {
+            content: "🪶";
+            position: absolute;
+            top: -24px;
+            left: 28px;
+            font-size: 2.1rem;
+            opacity: 0.55;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+            pointer-events: none;
+            transform: rotate(-10deg);
+        }
+
+        .library::after {
+            content: "🌹";
+            position: absolute;
+            bottom: -24px;
+            right: 28px;
+            font-size: 2rem;
+            opacity: 0.5;
+            pointer-events: none;
+            transform: rotate(5deg);
+        }
+
+        /* Header — lyrical & flowing */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #ecd7b3;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.85rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #5d4230, #c49762, #7a573a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+            display: inline-block;
+            font-family: "Cormorant Garamond", "Georgia", serif;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .header h1::before {
+            content: "✧";
+            font-size: 2rem;
+            position: absolute;
+            left: -58px;
+            top: -4px;
+            opacity: 0.6;
+            transform: rotate(-5deg);
+        }
+
+        .header h1::after {
+            content: "✧";
+            font-size: 2rem;
+            position: absolute;
+            right: -58px;
+            top: -4px;
+            opacity: 0.6;
+            transform: rotate(5deg);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #a27c52;
+            background: rgba(220, 190, 145, 0.2);
+            display: inline-block;
+            padding: 0.3rem 2rem;
+            border-radius: 80px;
+            margin-top: 0.7rem;
+            backdrop-filter: blur(2px);
+            border-left: 1px solid #efd8b0;
+            border-right: 1px solid #efd8b0;
+        }
+
+        /* BOOKS — poetic stanzas */
+        .books {
+            margin: 2rem 0 2rem;
+            position: relative;
+        }
+
+        .books ul {
+            list-style: none;
+            padding: 0.6rem 0.3rem;
+            background: #fffef8;
+            border-radius: 32px 16px 32px 16px;
+            box-shadow: inset 0 0 0 1px #fef0df, 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .books li {
+            font-size: 1.32rem;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            margin: 0.7rem 1rem;
+            background: #fffffffb;
+            border-radius: 60px 12px 60px 12px;
+            font-weight: 500;
+            color: #3b2a1b;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04), inset 0 1px 0 #fffcf5;
+            border-left: 5px solid #d9a568;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* poetic icons before each title */
+        .books li::before {
+            content: "✍️";
+            font-size: 1.25rem;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+            transition: 0.2s;
+        }
+
+        .books li:nth-child(1)::before { content: "🍃"; font-size: 1.2rem; }
+        .books li:nth-child(2)::before { content: "🌿"; }
+        .books li:nth-child(3)::before { content: "🌊"; }
+        .books li:nth-child(4)::before { content: "🌸"; }
+
+        /* author badge — soft & lyrical */
+        .books li::after {
+            content: attr(data-author);
+            font-size: 0.72rem;
+            font-weight: 500;
+            background: #f4ecdd;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            color: #9e764b;
+            font-family: "Courier New", monospace;
+            letter-spacing: 0.2px;
+            border: 1px solid #e9d1aa;
+            white-space: nowrap;
+        }
+
+        .books li:nth-child(1)::after { content: "W.B. Yeats — mystic fire"; }
+        .books li:nth-child(2)::after { content: "Walt Whitman — song of myself"; }
+        .books li:nth-child(3)::after { content: "T.S. Eliot — fragments"; }
+        .books li:nth-child(4)::after { content: "Emily Dickinson — enigma"; }
+
+        /* hover: gentle bloom */
+        .books li:hover {
+            transform: translateX(6px);
+            background: #fffefa;
+            border-left-color: #eab070;
+            box-shadow: 0 8px 16px rgba(100, 70, 35, 0.1);
+        }
+
+        .books li:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.08);
+            filter: drop-shadow(0 0 2px #dc9e56);
+        }
+
+        /* footer — inkwell return */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #4d3b2a;
+            color: #fef2e2;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.7rem 2rem;
+            border-radius: 40px 10px 40px 10px;
+            transition: all 0.3s;
+            letter-spacing: 0.8px;
+            border: 1px solid #dbaa6b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        .back:hover {
+            background: #6f543c;
+            transform: translateY(-2px);
+            gap: 18px;
+            border-radius: 10px 40px 10px 40px;
+            border-color: #f3ca91;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+        }
+
+        /* poetic epigraph ribbon */
+        .books ul::before {
+            content: "❝ where words breathe ❞";
+            position: absolute;
+            top: -36px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.68rem;
+            background: #f5ebd9;
+            padding: 0.2rem 1.2rem;
+            border-radius: 60px;
+            color: #c29158;
+            font-family: monospace;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            opacity: 0.8;
+            pointer-events: none;
+            font-style: italic;
+        }
+
+        /* delicate verse footer */
+        footer::before {
+            content: "✿ verses eternal ✿";
+            position: absolute;
+            bottom: 48px;
+            right: -10px;
+            font-size: 0.58rem;
+            background: #f3e7d3;
+            padding: 0.1rem 0.7rem;
+            border-radius: 50px;
+            color: #bc8a53;
+            transform: rotate(-2deg);
+            opacity: 0.65;
+            font-family: monospace;
+            white-space: nowrap;
+        }
+
+        /* soft breathing animation */
+        @keyframes poeticBreath {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .library {
+            background-size: 200% 100%;
+            animation: poeticBreath 14s infinite alternate ease;
+        }
+
+        /* responsive */
+        @media (max-width: 640px) {
+            .library {
+                padding: 1.4rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header h1::before, .header h1::after {
+                font-size: 1.3rem;
+                left: -32px;
+                right: -32px;
+            }
+            .books li {
+                font-size: 1rem;
+                padding: 0.7rem 0.7rem 0.7rem 2.2rem;
+            }
+            .books li::after {
+                font-size: 0.55rem;
+                white-space: normal;
+            }
+            .books ul::before {
+                font-size: 0.55rem;
+                white-space: nowrap;
+            }
+            footer::before {
+                display: none;
+            }
+            .back {
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        .books li:active {
+            transform: scale(0.98);
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            background: #281f16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cd925a;
+            border-radius: 20px;
+        }
+
+        .back:hover::after {
+            content: " 🪶";
+            font-size: 0.9rem;
+        }
+        .back::after {
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+<div class="library">
+
+    <div class="header">
+        <h1>🌹 Poetic Expressions</h1>
+        <p>Foundations of timeless thought</p>
+    </div>
+
+    <div class="books">
+        <ul>
+            <li data-author="W.B. Yeats">The Collected Poems of W.B. Yeats</li>
+            <li data-author="Walt Whitman">Leaves of Grass</li>
+            <li data-author="T.S. Eliot">The Waste Land</li>
+            <li data-author="Emily Dickinson">Selected Poems</li>
+        </ul>
+    </div>
+
+    <footer>
+        <a href="Index.html" class="back">← Back to Library</a>
+    </footer>
+
+</div>
+</body>
+</html>

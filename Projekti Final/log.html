@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Virtual Library | Sign In</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 10% 20%, #0a0a0a, #000000);
+      font-family: 'Poppins', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at 50% 30%, rgba(212, 175, 55, 0.08) 0%, rgba(0,0,0,0) 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    
+    .auth-container {
+      max-width: 480px;
+      width: 100%;
+      background: #0c0c0c;
+      backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(212, 175, 55, 0.2);
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.3s;
+      position: relative;
+      z-index: 2;
+    }
+
+    .auth-container:hover {
+      box-shadow: 0 35px 55px -20px rgba(212, 175, 55, 0.25), 0 0 0 1px rgba(212, 175, 55, 0.4);
+      transform: translateY(-2px);
+    }
+
+    
+    .gold-rule {
+      height: 4px;
+      background: linear-gradient(90deg, #d4af37, #f9e281, #d4af37, #b48c2c);
+      width: 100%;
+    }
+
+    
+    .auth-content {
+      padding: 2rem 2rem 2.2rem 2rem;
+    }
+
+    
+    .brand {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .brand-icon {
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #e4c580, #d4af37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      margin-bottom: 0.4rem;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+    }
+
+    .brand h1 {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      background: linear-gradient(to right, #f5e7c8, #d4af37, #e6c97e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.3rem;
+    }
+
+    .brand p {
+      color: #9f9f9f;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #b9943c;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-field {
+      width: 100%;
+      background: #141414;
+      border: 1.5px solid #2a2a2a;
+      border-radius: 1.2rem;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #f0f0f0;
+      transition: all 0.25s;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border-color: #d4af37;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+      background: #0a0a0a;
+    }
+
+    .input-field::placeholder {
+      color: #4a4a4a;
+      font-weight: 400;
+    }
+
+    
+    .btn-gold {
+      width: 100%;
+      background: linear-gradient(95deg, #d4af37, #e2bc4a);
+      border: none;
+      padding: 0.9rem 1.2rem;
+      border-radius: 2rem;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #0a0a0a;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(95deg, #e2c258, #dbb842);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(212, 175, 55, 0.5);
+    }
+
+    .btn-gold:active {
+      transform: translateY(1px);
+    }
+
+    
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1.6rem 0 1.4rem;
+      color: #5e5e5e;
+      font-size: 0.75rem;
+      font-weight: 500;
+      gap: 12px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #3a3a3a, transparent);
+    }
+
+    
+    .toggle-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+      background: #0f0f0f;
+      border-radius: 3rem;
+      padding: 0.3rem;
+      border: 1px solid #262626;
+    }
+
+    .toggle-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.6rem 0;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 2.5rem;
+      cursor: pointer;
+      background: transparent;
+      color: #b0b0b0;
+      transition: all 0.2s ease;
+      border: none;
+      font-family: inherit;
+    }
+
+    .toggle-btn.active {
+      background: #1f1f1f;
+      color: #d4af37;
+      box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.3), 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    
+    .form-panel {
+      display: none;
+    }
+
+    
+    .form-radio-switch {
+      display: none;
+    }
+
+    #loginToggle:checked ~ .auth-content .form-panel.login-panel,
+    #signupToggle:checked ~ .auth-content .form-panel.signup-panel {
+      display: block;
+    }
+
+    #loginToggle:checked ~ .auth-content .toggle-btn.login-btn,
+    #signupToggle:checked ~ .auth-content .toggle-btn.signup-btn {
+      background: #1f1f1f;
+      color: #d4af37;
+      box-shadow: inset 0 0 0 1px rgba(212, 175, 55, 0.3);
+    }
+
+    #loginToggle:checked ~ .auth-content .toggle-btn.signup-btn,
+    #signupToggle:checked ~ .auth-content .toggle-btn.login-btn {
+      background: transparent;
+      color: #b0b0b0;
+      box-shadow: none;
+    }
+
+    .legal-note {
+      margin-top: 1.8rem;
+      font-size: 0.7rem;
+      text-align: center;
+      color: #5a5a5a;
+      border-top: 1px solid #1f1f1f;
+      padding-top: 1.2rem;
+    }
+
+    .legal-note a {
+      color: #d4af37;
+      text-decoration: none;
+    }
+
+    .legal-note a:hover {
+      text-decoration: underline;
+    }
+
+    
+    .extra-links {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .forgot-link {
+      font-size: 0.7rem;
+      color: #b9943c;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .forgot-link:hover {
+      color: #e6c456;
+      text-decoration: underline;
+    }
+
+    
+    @media (max-width: 480px) {
+      .auth-content {
+        padding: 1.5rem;
+      }
+      .brand h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    
+    .input-field:-webkit-autofill,
+    .input-field:-webkit-autofill:focus {
+      transition: background-color 600000s 0s, color 600000s 0s;
+    }
+    input, button, .btn-gold {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    
+    .redirect-note {
+      font-size: 0.7rem;
+      text-align: center;
+      color: #8f8f8f;
+      margin-top: 1rem;
+      padding: 0.5rem;
+      background: rgba(212, 175, 55, 0.05);
+      border-radius: 1rem;
+    }
+
+    
+    .path-info {
+      font-size: 0.65rem;
+      text-align: center;
+      color: #d4af37;
+      margin-top: 0.5rem;
+      opacity: 0.8;
+    }
+
+    
+    .error-message {
+      color: #e08e5e;
+      font-size: 0.7rem;
+      margin-top: 0.4rem;
+      display: none;
+      text-align: center;
+    }
+
+    
+    input.error {
+      border-color: #e08e5e;
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-container">
+  <div class="gold-rule"></div>
+  
+  
+  <input type="radio" name="authForm" id="loginToggle" class="form-radio-switch" checked hidden>
+  <input type="radio" name="authForm" id="signupToggle" class="form-radio-switch" hidden>
+
+  <div class="auth-content">
+    
+    <div class="brand">
+      <div class="brand-icon">✦</div>
+      <h1>Virtual<span style="color:#d4af37;">&nbsp;Library</span></h1>
+      <p>golden collection • timeless wisdom</p>
+    </div>
+
+   
+    <div class="toggle-buttons">
+      <label for="loginToggle" class="toggle-btn login-btn" id="loginLabel">LOGIN</label>
+      <label for="signupToggle" class="toggle-btn signup-btn" id="signupLabel">SIGN UP</label>
+    </div>
+
+   
+    <div class="form-panel login-panel">
+      <div class="form-group">
+        <label>EMAIL OR USERNAME</label>
+        <input type="email" class="input-field" id="loginEmail" placeholder="hello@opulent.com">
+        <div class="error-message" id="loginEmailError"></div>
+      </div>
+      <div class="form-group">
+        <label>PASSWORD</label>
+        <input type="password" class="input-field" id="loginPassword" placeholder="••••••••">
+        <div class="error-message" id="loginPasswordError"></div>
+      </div>
+      <div class="extra-links">
+        <a href="#" class="forgot-link" id="forgotLink">Forgot password?</a>
+      </div>
+      
+      <button class="btn-gold" id="loginBtn">
+        <span>→</span> ACCESS ACCOUNT
+      </button>
+      
+      <div class="redirect-note" id="loginRedirectNote" style="display: none;">
+        ⚜️ Redirecting to Library...
+      </div>
+      <div class="path-info">
+        📍 Demo: demo@library.com / any password
+      </div>
+    </div>
+
+    
+    <div class="form-panel signup-panel">
+      <div class="form-group">
+        <label>FULL NAME</label>
+        <input type="text" class="input-field" id="signupName" placeholder="Aria Sterling">
+        <div class="error-message" id="signupNameError"></div>
+      </div>
+      <div class="form-group">
+        <label>EMAIL ADDRESS</label>
+        <input type="email" class="input-field" id="signupEmail" placeholder="hello@library.com">
+        <div class="error-message" id="signupEmailError"></div>
+      </div>
+      <div class="form-group">
+        <label>PASSWORD</label>
+        <input type="password" class="input-field" id="signupPassword" placeholder="create strong password">
+        <div class="error-message" id="signupPasswordError"></div>
+      </div>
+      <div class="form-group">
+        <label>CONFIRM PASSWORD</label>
+        <input type="password" class="input-field" id="signupConfirm" placeholder="confirm password">
+        <div class="error-message" id="signupConfirmError"></div>
+      </div>
+      
+      <button class="btn-gold" id="signupBtn">
+        <span>✨</span> CREATE ACCOUNT
+      </button>
+      
+      <div class="divider">JOIN THE CIRCLE</div>
+      <div class="redirect-note" id="signupRedirectNote" style="display: none;">
+        ⚜️ Account created! Redirecting...
+      </div>
+      <div class="path-info">
+        📍 Simple validation • demo mode
+      </div>
+    </div>
+
+    <div class="legal-note">
+      By continuing you agree to <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    
+    const demoEmail = "demo@library.com";
+    const demoPassword = "demo123";
+
+    
+    function clearErrors() {
+      document.querySelectorAll('.error-message').forEach(el => {
+        el.style.display = 'none';
+        el.textContent = '';
+      });
+      document.querySelectorAll('.input-field').forEach(el => {
+        el.classList.remove('error');
+      });
+    }
+
+    function showError(elementId, message) {
+      const errorEl = document.getElementById(elementId);
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.style.display = 'block';
+        const inputField = errorEl.previousElementSibling;
+        if (inputField && inputField.classList.contains('input-field')) {
+          inputField.classList.add('error');
+        }
+      }
+    }
+
+    
+    function validateLogin() {
+      clearErrors();
+      let isValid = true;
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      if (!email) {
+        showError('loginEmailError', '❄️ Email or username is required');
+        isValid = false;
+      }
+
+      if (!password) {
+        showError('loginPasswordError', '❄️ Password is required');
+        isValid = false;
+      }
+
+      if (isValid) {
+        
+        if (email === demoEmail && password === demoPassword) {
+          return true;
+        } else {
+          
+          showError('loginEmailError', '⚠️ Invalid credentials. Try: demo@library.com / demo123');
+          return false;
+        }
+      }
+      return false;
+    }
+
+    
+    function validateSignup() {
+      clearErrors();
+      let isValid = true;
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const password = document.getElementById('signupPassword').value;
+      const confirm = document.getElementById('signupConfirm').value;
+
+      if (!name) {
+        showError('signupNameError', '❄️ Full name is required');
+        isValid = false;
+      } else if (name.length < 2) {
+        showError('signupNameError', '❄️ Name must be at least 2 characters');
+        isValid = false;
+      }
+
+      if (!email) {
+        showError('signupEmailError', '❄️ Email address is required');
+        isValid = false;
+      } else if (!email.includes('@') || !email.includes('.')) {
+        showError('signupEmailError', '❄️ Please enter a valid email');
+        isValid = false;
+      }
+
+      if (!password) {
+        showError('signupPasswordError', '❄️ Password is required');
+        isValid = false;
+      } else if (password.length < 4) {
+        showError('signupPasswordError', '❄️ Password must be at least 4 characters');
+        isValid = false;
+      }
+
+      if (!confirm) {
+        showError('signupConfirmError', '❄️ Please confirm your password');
+        isValid = false;
+      } else if (password !== confirm) {
+        showError('signupConfirmError', '❄️ Passwords do not match');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    
+    function redirectToIndex() {
+      const redirectNote = document.querySelector('.form-panel.login-panel .redirect-note');
+      if (redirectNote) {
+        redirectNote.style.display = 'block';
+      }
+      setTimeout(() => {
+        window.location.href = '../Index.html';
+      }, 800);
+    }
+
+    function signupRedirect() {
+      const note = document.getElementById('signupRedirectNote');
+      if (note) note.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = '../Index.html';
+      }, 800);
+    }
+
+    
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+      loginBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (validateLogin()) {
+          redirectToIndex();
+        }
+      });
+    }
+
+    
+    const signupBtn = document.getElementById('signupBtn');
+    if (signupBtn) {
+      signupBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (validateSignup()) {
+          
+          localStorage.setItem('libraryUser', document.getElementById('signupName').value.trim());
+          signupRedirect();
+        }
+      });
+    }
+
+    
+    const forgotLink = document.getElementById('forgotLink');
+    if (forgotLink) {
+      forgotLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('🔐 Password reset demo: Use demo@library.com / demo123 to login.');
+      });
+    }
+
+    
+    const loginInputs = ['loginEmail', 'loginPassword'];
+    loginInputs.forEach(id => {
+      const input = document.getElementById(id);
+      if (input) {
+        input.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            if (validateLogin()) redirectToIndex();
+          }
+        });
+      }
+    });
+
+    const signupInputs = ['signupName', 'signupEmail', 'signupPassword', 'signupConfirm'];
+    signupInputs.forEach(id => {
+      const input = document.getElementById(id);
+      if (input) {
+        input.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            if (validateSignup()) signupRedirect();
+          }
+        });
+      }
+    });
+
+    
+    const loginEmailField = document.getElementById('loginEmail');
+    const loginPasswordField = document.getElementById('loginPassword');
+    if (loginEmailField && loginPasswordField) {
+      
+      loginEmailField.addEventListener('focus', () => {
+        const note = document.getElementById('loginRedirectNote');
+        if (note) note.style.display = 'none';
+      });
+    }
+  })();
+</script>
+</body>
+</html>

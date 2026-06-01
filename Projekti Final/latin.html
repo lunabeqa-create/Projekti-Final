@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin American Voices | Magical Realism & Soul</title>
+    <style>
+        /* --------------------------------------------
+           LATIN AMERICAN VOICES — Vivid, Earthy, Magical
+           Tropical warmth, colonial texture, fiesta of colors
+        -------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #201a12, #0f0c07);
+            font-family: "Cormorant Garamond", "Georgia", serif;
+            color: #2f261b;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* vibrant tropical overlay — leaves & warmth */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 85% 40%, rgba(210, 140, 60, 0.05) 2px, transparent 2px),
+                              repeating-linear-gradient(65deg, rgba(180, 110, 50, 0.02) 0px, rgba(180, 110, 50, 0.02) 1px, transparent 1px, transparent 22px);
+            background-size: 42px 42px, 28px 28px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* floating mariposas / magical elements */
+        body::after {
+            content: "🦋 🌺 🦜 🌶️ ✨";
+            position: fixed;
+            bottom: 12%;
+            left: -70px;
+            font-size: 52px;
+            white-space: nowrap;
+            color: rgba(220, 150, 70, 0.09);
+            pointer-events: none;
+            animation: driftMariposa 48s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes driftMariposa {
+            0% { transform: translateX(-15%) rotate(-4deg); opacity: 0.1; }
+            50% { transform: translateX(38%) rotate(3deg); opacity: 0.2; }
+            100% { transform: translateX(90%) rotate(-2deg); opacity: 0.1; }
+        }
+
+        /* main library — adobe / hacienda style with vibrant accents */
+        .library {
+            position: relative;
+            z-index: 10;
+            max-width: 740px;
+            width: 100%;
+            margin: 0 auto;
+            background: #fff8ef;
+            background-image: linear-gradient(145deg, #fff5e6 0%, #fbefdb 100%);
+            border-radius: 56px 32px 56px 32px;
+            box-shadow: 0 30px 42px -12px rgba(0,0,0,0.55),
+                        0 0 0 1px #f2e2ca inset,
+                        0 0 0 6px #cb9f6e inset,
+                        0 0 0 12px #e2cfae inset;
+            padding: 2.2rem 2rem 2.2rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .library:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 38px 50px -14px black;
+        }
+
+        /* decorative: sun & cactus motifs */
+        .library::before {
+            content: "🌵";
+            position: absolute;
+            top: -24px;
+            right: 32px;
+            font-size: 2rem;
+            opacity: 0.55;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+            pointer-events: none;
+            transform: rotate(5deg);
+        }
+
+        .library::after {
+            content: "🌞";
+            position: absolute;
+            bottom: -22px;
+            left: 28px;
+            font-size: 2rem;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Header — festive yet profound */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 3px dotted #e9cfaa;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.85rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c35e2a, #e8954a, #b55a2a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            font-family: "Cormorant Garamond", "Georgia", serif;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .header h1::before {
+            content: "🪶";
+            font-size: 2rem;
+            position: absolute;
+            left: -58px;
+            top: -4px;
+            opacity: 0.6;
+            transform: rotate(-12deg);
+        }
+
+        .header h1::after {
+            content: "🎺";
+            font-size: 2rem;
+            position: absolute;
+            right: -58px;
+            top: -4px;
+            opacity: 0.6;
+            transform: rotate(5deg);
+        }
+
+        .header p {
+            font-size: 1.12rem;
+            font-style: italic;
+            color: #a36d42;
+            background: rgba(230, 190, 130, 0.2);
+            display: inline-block;
+            padding: 0.3rem 2rem;
+            border-radius: 80px;
+            margin-top: 0.7rem;
+            backdrop-filter: blur(2px);
+            border-left: 1px solid #f3daae;
+            border-right: 1px solid #f3daae;
+        }
+
+        /* BOOKS — magical realist cards */
+        .books {
+            margin: 2rem 0 2rem;
+            position: relative;
+        }
+
+        .books ul {
+            list-style: none;
+            padding: 0.6rem 0.3rem;
+            background: #fffef7;
+            border-radius: 42px 28px 42px 28px;
+            box-shadow: inset 0 0 0 1px #fbefdf, 0 8px 20px rgba(0,0,0,0.07);
+        }
+
+        .books li {
+            font-size: 1.32rem;
+            padding: 0.9rem 1rem 0.9rem 3rem;
+            margin: 0.7rem 1rem;
+            background: #fffffb;
+            border-radius: 50px 14px 50px 14px;
+            font-weight: 600;
+            color: #3b2c1c;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.04), inset 0 1px 0 #fffcf5;
+            border-left: 6px solid #de9f60;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Latin soul icons before titles */
+        .books li::before {
+            content: "✨";
+            font-size: 1.3rem;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.7;
+            transition: 0.2s;
+        }
+
+        .books li:nth-child(1)::before { content: "🦋"; font-size: 1.2rem; }
+        .books li:nth-child(2)::before { content: "🎭"; }
+        .books li:nth-child(3)::before { content: "📖"; }
+        .books li:nth-child(4)::before { content: "🌶️"; }
+
+        /* author badges: warm & vibrant */
+        .books li::after {
+            content: attr(data-author);
+            font-size: 0.73rem;
+            font-weight: 500;
+            background: #f7ebd8;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            color: #a57144;
+            font-family: "Courier New", monospace;
+            letter-spacing: 0.3px;
+            border: 1px solid #eccb9c;
+            white-space: nowrap;
+        }
+
+        /* mapping legendary authors */
+        .books li:nth-child(1)::after { content: "Gabriel García Márquez — Macondo"; }
+        .books li:nth-child(2)::after { content: "Carlos Fuentes — revolución"; }
+        .books li:nth-child(3)::after { content: "Machado de Assis — realismo mágico"; }
+        .books li:nth-child(4)::after { content: "Laura Esquivel — recetas del alma"; }
+
+        /* hover: tropical warmth & rhythm */
+        .books li:hover {
+            transform: translateX(8px);
+            background: #fffef5;
+            border-left-color: #f0b067;
+            box-shadow: 0 8px 16px rgba(150, 80, 30, 0.12);
+        }
+
+        .books li:hover::before {
+            opacity: 1;
+            transform: translateY(-50%) scale(1.12);
+            filter: drop-shadow(0 0 2px #e49542);
+        }
+
+        /* footer — woven textile return button */
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #5b3e2a;
+            color: #fef0df;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.7rem 2rem;
+            border-radius: 40px 10px 40px 10px;
+            transition: all 0.3s;
+            letter-spacing: 0.8px;
+            border: 1px solid #e2b074;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            font-family: "Cormorant Garamond", serif;
+        }
+
+        .back:hover {
+            background: #7a583c;
+            transform: translateY(-2px);
+            gap: 18px;
+            border-radius: 10px 40px 10px 40px;
+            border-color: #fad197;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+        }
+
+        /* decorative: latin american folk art ribbon */
+        .books ul::before {
+            content: "✺ canto y magia ✺";
+            position: absolute;
+            top: -36px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            background: #f8e7cf;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            color: #bb7b48;
+            font-family: monospace;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        /* footer emblem: woven pattern hint */
+        footer::before {
+            content: "🌽 maíz y sueños 🌽";
+            position: absolute;
+            bottom: 48px;
+            right: -8px;
+            font-size: 0.6rem;
+            background: #f5e3cc;
+            padding: 0.1rem 0.8rem;
+            border-radius: 50px;
+            color: #b97f4b;
+            transform: rotate(-1deg);
+            opacity: 0.6;
+            font-family: monospace;
+        }
+
+        /* magical realist shimmer */
+        @keyframes tierraGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .library {
+            background-size: 200% 100%;
+            animation: tierraGlow 14s infinite alternate ease;
+        }
+
+        /* responsive warmth */
+        @media (max-width: 640px) {
+            .library {
+                padding: 1.4rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header h1::before, .header h1::after {
+                font-size: 1.3rem;
+                left: -32px;
+                right: -32px;
+                top: -2px;
+            }
+            .books li {
+                font-size: 1rem;
+                padding: 0.7rem 0.7rem 0.7rem 2.2rem;
+            }
+            .books li::after {
+                font-size: 0.58rem;
+                white-space: normal;
+            }
+            .books ul::before {
+                font-size: 0.55rem;
+                white-space: nowrap;
+            }
+            footer::before {
+                display: none;
+            }
+            .back {
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        .books li:active {
+            transform: scale(0.98);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            background: #2c1f15;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cd8d53;
+            border-radius: 20px;
+        }
+
+        .back:hover::after {
+            content: " 🦜";
+            font-size: 0.9rem;
+        }
+        .back::after {
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+<div class="library">
+
+    <div class="header">
+        <h1>📚 Latin American Voices</h1>
+        <p>Foundations of timeless thought</p>
+    </div>
+
+    <div class="books">
+        <ul>
+            <li data-author="Gabriel García Márquez">One Hundred Years of Solitude</li>
+            <li data-author="Carlos Fuentes">The Death of Artemio Cruz</li>
+            <li data-author="Machado de Assis">The Posthumous Memoirs of Brás Cubas</li>
+            <li data-author="Laura Esquivel">Like Water for Chocolate</li>
+        </ul>
+    </div>
+
+    <footer>
+        <a href="index.html" class="back">← Back to Library</a>
+    </footer>
+
+</div>
+</body>
+</html>
